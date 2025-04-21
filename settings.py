@@ -53,6 +53,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'boards.middleware.CacheMiddleware',  # Custom cache middleware
 ]
 
 ROOT_URLCONF = 'myproject.urls'
@@ -154,3 +156,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # CSRF_COOKIE_SECURE = True
 # SECURE_BROWSER_XSS_FILTER = True
 # SECURE_CONTENT_TYPE_NOSNIFF = True
+
+'''CACHES={
+    'default':{
+        'BACKEND':'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION':'unique-snowflake',
+    }
+}
+
+CACHE_VERSION = '1.0'  # Versioning for cache keys
+CACHE_TIMEOUTS={
+    'board':60*15,
+    'topic':60*5,
+    'post':60*2,
+}'''
+
